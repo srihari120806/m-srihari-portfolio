@@ -1,5 +1,15 @@
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{const t=document.querySelector(a.getAttribute("href"));if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth"})}}));
 
+// Make the entire project card clickable and open its GitHub repository.
+document.querySelectorAll('.project').forEach(card=>{
+  const link=card.querySelector('.project-link');
+  if(!link) return;
+  card.addEventListener('click',e=>{
+    if(e.target.closest('a')) return;
+    window.open(link.href,'_blank','noopener,noreferrer');
+  });
+});
+
 const cloudStyle=document.createElement('style');
 cloudStyle.textContent=`
 .google-fallback{position:relative!important;width:132px!important;height:132px!important;border-radius:50%!important;border:7px solid #d9dee7!important;background:#fff!important;box-shadow:0 8px 22px #0004!important;overflow:hidden!important;color:transparent!important;display:block!important}
